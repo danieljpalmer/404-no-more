@@ -42,7 +42,7 @@ generateAnswer();
     <main
         class="w-full min-h-screen flex flex-col items-center justify-center text-center p-10"
     >
-        <h2 class="text-8xl font-bold">404</h2>
+        <h2 class="text-8xl font-bold font-mono">404</h2>
 
         <p class="text-2xl font-medium text-gray-500 mt-3">
             <span class="text-gray-400">"{{ fullPath }}"</span> doesn't exist,
