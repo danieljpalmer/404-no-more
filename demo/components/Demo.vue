@@ -57,15 +57,17 @@ generateAnswer();
         </div>
 
         <div
-            class="bg-gray-50 p-6 font-medium mt-10 max-w-prose rounded-lg text-left flex flex-col"
+            class="bg-gray-50 p-5 font-medium mt-10 max-w-prose rounded-lg text-left flex flex-col"
             v-else-if="chainAnswer"
         >
             <Markdown :value="chainAnswer.answer" />
 
-            <h5 class="text-sm text-gray-500 mt-4">References:</h5>
+            <h5 class="text-sm text-gray-400 mt-4 mb-2">References:</h5>
 
             <div class="flex items-center flex-wrap gap-3">
                 <a
+                    class="text-sm text-blue-600 underline"
+                    target="_blank"
                     v-for="reference in chainAnswer.references"
                     :href="reference"
                     >{{ reference }}</a
