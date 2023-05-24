@@ -4,6 +4,8 @@ Use LLMs to banish 404s from your application, always delivering relevant inform
 
 Disclosure: The LLM chain that powers this project is built with [Relevance AI](https://documentation.relevanceai.com), which I work on.
 
+[See a demo video!](https://www.loom.com/share/c107fc1f719245e8a674504e2d456905)
+
 ## Prerequisite
 
 For this chain to work, you will need a Relevance AI dataset where we have loaded in your website content. We're about to release clear steps for how to do this - but for now, shoot me a [DM on Twitter for help!](https://www.twitter.com/userlastname)
