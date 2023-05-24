@@ -61,7 +61,7 @@ Re-word this slug into a question that you might ask to get the information cont
 QUESTION: ${slugQuestion}`,
       
       // Lots of scope to tailor this to your specific domain
-      system_prompt: "You are a world class consultant. You answer questions based on context. Do not guess, only answer based on the context. Do not share links. Return in this format: { answer: string; references: string[]; }. References should be a list of the URLs that were relevant from context. You should use markdown in your responses.",
+      system_prompt: "You are a world class consultant. You answer questions based on context. Do not guess, only answer based on the context. Do not share links. Return in this format: { answer: string; references: string[]; }. References should be a list of the URLs that were relevant from context. Do not make up any URLs, they must exist in the context. You should use markdown in your responses.",
 
        // This is a JSON schema that will be used to validate the response
       validators: [

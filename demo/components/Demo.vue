@@ -35,43 +35,51 @@ const generateAnswer = async () => {
     }
 };
 
-generateAnswer();
+if (fullPath.length > 2) {
+    generateAnswer();
+}
 </script>
 
 <template>
     <main
         class="w-full min-h-screen flex flex-col items-center justify-center text-center p-10"
     >
-        <h2 class="text-8xl font-bold font-mono">404</h2>
-
-        <p class="text-2xl font-medium text-gray-500 mt-3">
-            <span class="text-gray-400">"{{ fullPath }}"</span> doesn't exist,
-            but let me see if I can help...
-        </p>
-
-        <div
-            v-if="chainLoading"
-            class="px-4 py-2 rounded-lg bg-blue-50 text-blue-900 font-medium mt-10"
-        >
-            Loading...
+        <div v-if="fullPath.length <= 2" class="flex flex-col w-full">
+            <h2 class="text-5xl font-bold">404, no more!</h2>
         </div>
 
-        <div
-            class="bg-gray-50 p-5 font-medium mt-10 max-w-prose rounded-lg text-left flex flex-col"
-            v-else-if="chainAnswer"
-        >
-            <Markdown :value="chainAnswer.answer" />
+        <div v-else class="flex flex-col w-full items-center justify-center">
+            <h2 class="text-8xl font-bold font-mono">404</h2>
 
-            <h5 class="text-sm text-gray-400 mt-4 mb-2">References:</h5>
+            <p class="text-2xl font-medium text-gray-500 mt-3">
+                <span class="text-gray-400">"{{ fullPath }}"</span> doesn't
+                exist, but let me see if I can help...
+            </p>
 
-            <div class="flex items-center flex-wrap gap-3">
-                <a
-                    class="text-sm text-blue-600 underline"
-                    target="_blank"
-                    v-for="reference in chainAnswer.references"
-                    :href="reference"
-                    >{{ reference }}</a
-                >
+            <div
+                v-if="chainLoading"
+                class="px-4 py-2 rounded-lg bg-blue-50 text-blue-900 font-medium mt-10"
+            >
+                Loading...
+            </div>
+
+            <div
+                class="bg-gray-50 p-5 font-medium mt-10 max-w-prose rounded-lg text-left flex flex-col"
+                v-else-if="chainAnswer"
+            >
+                <Markdown :value="chainAnswer.answer" />
+
+                <h5 class="text-sm text-gray-400 mt-4 mb-2">References:</h5>
+
+                <div class="flex flex-col space-y-3">
+                    <a
+                        class="text-sm text-blue-600 underline"
+                        target="_blank"
+                        v-for="reference in chainAnswer.references"
+                        :href="reference"
+                        >{{ reference }}</a
+                    >
+                </div>
             </div>
         </div>
     </main>
