@@ -12,7 +12,11 @@ const route = useRoute();
 
 const { fullPath } = route;
 
-const chainAnswer = ref<string>('');
+const chainAnswer = ref<{
+    answer: string;
+    references: string[];
+}>();
+
 const chainLoading = ref<boolean>(false);
 
 const generateAnswer = async () => {
@@ -23,7 +27,7 @@ const generateAnswer = async () => {
             slug: fullPath,
         });
 
-        chainAnswer.value = answer;
+        chainAnswer.value = JSON.parse(answer);
     } catch (error) {
         console.error(error);
     } finally {
@@ -53,10 +57,20 @@ generateAnswer();
         </div>
 
         <div
-            class="bg-gray-50 p-6 font-medium mt-10 max-w-prose rounded-lg text-left"
-            v-else-if="chainAnswer.length"
+            class="bg-gray-50 p-6 font-medium mt-10 max-w-prose rounded-lg text-left flex flex-col"
+            v-else-if="chainAnswer"
         >
-            <Markdown :value="chainAnswer" />
+            <Markdown :value="chainAnswer.answer" />
+
+            <h5 class="text-sm text-gray-500 mt-4">References:</h5>
+
+            <div class="flex items-center flex-wrap gap-3">
+                <a
+                    v-for="reference in chainAnswer.references"
+                    :href="reference"
+                    >{{ reference }}</a
+                >
+            </div>
         </div>
     </main>
 </template>
